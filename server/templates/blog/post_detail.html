@@ -1,0 +1,32 @@
+{% extends 'blog/post_list.html' %}
+
+{% load thumbnail humanize tags %}
+
+{% block add_style %}
+	<link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}style/pygments.css" />	
+{% endblock add_style %}
+
+{% block info %}
+	At some point there will be a blog here that will chronicle my rise to POWER!
+{% endblock info %}
+
+{% block banner %}
+	<div class="splash"><a href="{{ post.get_absolute_url }}" title="{{ post.title }}"><img class="list_view" alt="{{ post.slug }}" src="{{ post.image.extra_thumbnails.banner }}" /></a></div>
+{% endblock %}
+
+{% block h1 %}
+	
+{% endblock h1 %}
+
+{% block content %}
+<div id="post" class="post">
+	<div id="post_title">
+		<h4>{{ post.title }}</h4><p class="post_meta"> By <a href="#" title="{{ post.author|capfirst }}'s profile">{{ post.author|capfirst }}</a> <span>//</span> <span class="post_date">{{ post.pub_date|naturalday }}</span></p>
+	</div><!-- /.post_title -->
+	<div id="post_body">
+		{% autoescape off %}
+		{{ post.body|pygmentify|linebreaksbr }}
+		{% endautoescape %}
+	</div>
+</div> <!-- /.post -->
+{% endblock %}

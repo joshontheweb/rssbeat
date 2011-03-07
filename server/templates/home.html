@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		{% block style %}
+		<link rel="stylesheet" href="styles/style.css" />
+		{% endblock style %}
+		
+		{% block script %}
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+		<script type="text/javascript" src="scripts/custom.js"></script> 
+		<script type="text/javascript" src="scripts/socket.io.js"></script> 
+		{% endblock script %}
+		
+		<title>
+			{% block title %}
+				Somethingcoded	
+			{% endblock title %}
+		</title>
+	</head>
+	<body>
+    {% block content %}
+    	<h2>Round Trip Data</h2>
+    	<p>This represents your cursor coords as well as anyone else on the same page. The data is completing a trip to and from the server through a websocket.</p>
+    	<p class="coords"></p>
+    {% endblock content %}
+    </body>
+</html>

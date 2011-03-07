@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block meta %}{% endblock meta %}
+
+{% block title %}Contact | {somethingcoded}{% endblock %}
+
+{% block h1 %}Contact{% endblock %}
+
+{% block info %}Thank you for taking time to drop me a line.  I'll get back to you soon.{% endblock %}
+	
+{% block content %}
+	<form action="contact" method="POST">
+		{{ form.as_p }}
+		<p><input type="submit" value="Submit" /></p>
+	</form>
+{% endblock content %}

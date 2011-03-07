@@ -1,8 +1,13 @@
+#main { min-height: 300px; }
+
 .wrapper {
     overflow: hidden;
 }
 
 .section {
+    width: 280px;
+    margin-right: 10px;
+    float: left;
     position: relative;
     border: 1px solid #ddd;
     padding: 14px;
@@ -11,6 +16,10 @@
     background: #fff;
 }
 
+/*.section:nth-child(3n) {
+    margin-right: 0;
+}
+*/
 .section .settings,
 .section .close,
 .section .save { float: right; position: relative; top: -15px; }
@@ -23,7 +32,6 @@
 aside .section { color: #444 }
 aside .section .grip { background-color: #c6c6c6; }
 
-.main.column .section { width: 650px; }
 
 #main.wrapper .section header .title {
     margin: 15px 0;
@@ -54,3 +62,5 @@ aside .section .grip { background-color: #c6c6c6; }
 .grip { height: 8px; background-color: #F16529; position: absolute; top: 0; left: 0; width: 100%; }
 
 .stash { display: none; }
+
+.mouse { position: absolute; background: url(images/cursor.png) center center no-repeat; width: 15px; height : 22px }

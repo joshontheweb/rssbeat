@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block title %}
+	portfolio | {somethingcoded}
+{% endblock title %}
+
+{% block info %}
+	The portfolio section is a little sparse at the moment, feel free to help me fill it up. <a href="{% url contact %}" title="Contact form">Hire me</a>.
+{% endblock info %}
+
+{% block h1 %}
+	portfolio
+{% endblock h1 %}
+{% block content %}
+	{% for project in project_list %}
+		<div class="project">
+			<a href="#"><h3>{{ project.name }}</h3></a>
+			{# {{ project.image.thumbnail_tag }} #}
+			<span class="img_wrap">
+				<a href="#">
+					<img src="{{ project.image.thumbnail }}" alt="{{ project.name }}" height="{{ project.image.thumbnail.height }}" width="{{ project.image.thumbnail.width }}" />
+				</a>
+			</span>
+			<div class="project_info">
+				<p>
+					<span>Client //</span> {{ project.client }}
+				</p>
+				<p>
+					<span>Implementation //</span> {% for implementation in project.implementations.all %} {{ implementation }} {% endfor %}
+				</p>
+				<p>
+					{{ project.comment }}
+				</p>
+			</div>
+			{# <img src="{{ project.image.extra_thumbnails.detail }}" height="{{ project.image.extra_thumbnails.detail.height }}" width="{{ project.image.extra_thumbnails.detail.width }}" /> #}
+			{# <img src="{{ project.image.extra_thumbnails.banner }}" height="{{ project.image.extra_thumbnails.banner.height }}" width="{{ project.image.extra_thumbnails.banner.width }}" /> #}
+		
+
+			{# <img src="{{ thumb }}" height="{{ thumb.height }}" width="{{ thumb.width }}" /> #}
+		</div>
+		<div class="clear"></div>
+	{% endfor %}
+{% endblock content %}

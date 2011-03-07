@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		{% block style %}
+		<link rel="stylesheet" type="text/css" media="all" href="/styles/reset.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="/styles/text.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="/styles/960.css" />
+		<link rel="stylesheet" type="text/css" media="all" href="/styles/style.css" />
+		{% endblock style %}
+		
+		{% block script %}
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+		<script type="text/javascript" src="scripts/socket.io.js"></script>
+		<script type="text/javascript" src="scripts/custom.js"></script> 
+		{% endblock script %}
+		
+		<title>
+			{% block title %}
+				Somethingcoded	
+			{% endblock title %}
+		</title>
+	</head>
+	<body>
+		<div id="main" class="container_16">
+			<div id="sidebar" class="grid_5 suffix_1">	
+				<a id="logo" class="grid_6" href="/mission" title="There's no place like home."><span>somethingcoded</span></a>
+				<div class="clear"></div>
+				<div id="nav">
+					{% block nav %}
+					<ul>						
+						<li id="about"><a href="/about" title="Want to know what somethingcoded is all about?">About</a></li>
+						{# <li id="mission"><a href="/mission" title="Somethingcoded is a web design/development company that aims to rock your socks off!">Mission</a></li> #}
+						<li id="portfolio"><a href="/portfolio" title="Take a look at some of my most recent projects.">Portfolio</a></li>
+						<li id="blog"><a href="/blog" title="At some point there will be a blog here that will chronicle my rise to POWER!">Blog</a></li>
+						{# <li id="services"><a href="/services" title="What can somethingcoded do for you?">Services</a></li> #}
+						<li id="contact"><a href="/contact" title="You are one email away from a killer website.">Contact</a></li>
+						
+					</ul>
+					{% endblock nav %}
+				</div><!-- /#nav -->
+				<div id="info">
+					<p>
+					{% block info %}
+					{% endblock info %}
+					</p>
+				</div><!-- /#info -->
+			</div><!-- /#sidebar -->
+			<div id="banner" class="grid_10">
+				{% block banner %}
+						<div class="splash">
+							<img src="{{ latest_post.image.extra_thumbnails.banner|default:'/images/ledzeppelin_iv.jpg' }}" alt="{{ latest_post.title }}" height="{{ latest_post.image.extra_thumbnails.banner.height }}" width="{{ latest_post.image.extra_thumbnails.banner.width }}">
+							<span class="teaser"><a href="{{ latest_post.get_absolute_url }}" title="have a look at my latest article">{{ latest_post.title }}</a></span>
+						</div>
+				{% endblock banner %}
+			</div><!-- /#banner -->
+			<div id="content" class="grid_9">
+				<h1>
+					{% block h1 %}
+					{% endblock h1 %}
+				</h1>
+				<div id="body">
+                    <!-- <p class="coords"></p> -->
+					{% block content %}
+					{% endblock content %}
+				</div>
+			</div><!-- /#content --><script type="text/javascript">$('content').fade('hide');</script>
+		</div><!-- /#main -->
+		<div class="clear"></div>
+		<div id="footer" class="container_16">
+			{% block footer %}
+			<div id="twitter" class="grid_7">
+			    {% if tweet %}
+					<h3>latest tweet</h3>
+			        <div>
+						<p id="tweet">{{ tweet.text }}</p>
+						<p><span>Posted {{ tweet.date }} <span>//</span> <a href="http://twitter.com/joshontheweb" title="My twitter page">Follow me on twitter</a></span></p>
+			   		</div>
+				{% endif %}
+			</div><!-- /#twitter -->
+			{% endblock footer %}
+		</div><!-- /#footer -->
+	</body>
+</html>

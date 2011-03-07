@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load thumbnail humanize %}
+
+
+{% block title %}
+	Blog | {somethingcoded}
+{% endblock title %}
+
+{% block info %}
+	At some point there will be a blog here that will chronicle my rise to POWER!
+{% endblock info %}
+
+{% block h1 %}
+	Blog
+{% endblock h1 %}
+{% block content %}
+	{% for post in posts %}
+		<div class="post">
+			<div class="post_title">
+				<h4><a href="{{ post.get_absolute_url }}" title="{{ post.title }}">{{ post.title }}</a></h4><p class="post_meta"> By <a href="#" title="{{ post.author|capfirst }}'s profile">{{ post.author|capfirst }}</a> <span>//</span> <span class="post_date">{{ post.pub_date|naturalday }}</span></p>
+			</div><!-- /.post_title -->
+			<a href="{{ post.get_absolute_url }}" title="{{ post.title }}"><img class="list_view" alt="{{ post.slug }}" src="{% thumbnail post.image 100x100 crop,upscale %}" /></a>
+			<p>{{ post.body|truncatewords_html:25 }}</p>
+		</div> <!-- /.post -->
+	{% endfor %}
+{% endblock %}

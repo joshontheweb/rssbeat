@@ -42,22 +42,13 @@
     });
     
     // Page view
-    views.PageView = views.View.extend({
-        initialize: function(){
-            this.$el = $(this.el);
-            var $columns = this.$('.column')
-            $columns.sortable({
-                connectWith: '.column',
-                handle: '.grip'
-            });
-        }
-    });
+    views.Page = views.View.extend({});
         
     // App root object
     var AppController = controllers.Controller.extend({
         start: function(){
             this.page = new models.Page({el: $('body')});
-            new views.PageView({el: $('body'), model: this.page})
+            new views.Page({el: $('body'), model: this.page})
         },
         
         // app wide objects
